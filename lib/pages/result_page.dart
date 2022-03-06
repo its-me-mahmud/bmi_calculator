@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/bmi_provider.dart';
-import '../utils/strings.dart';
-import '../utils/styles.dart';
-import '../widgets/app_drawer.dart';
-import '../widgets/bottom_button.dart';
-import '../widgets/reusable_card.dart';
+import 'package:bmi_calculator/providers/bmi_provider.dart';
+import 'package:bmi_calculator/utils/utils.dart';
+import 'package:bmi_calculator/widgets/widgets.dart';
 
 class ResultPage extends StatelessWidget {
+  ResultPage({Key? key}) : super(key: key);
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -19,13 +18,13 @@ class ResultPage extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(FontAwesomeIcons.bars),
-          onPressed: () => _scaffoldKey.currentState.openDrawer(),
+          icon: const Icon(FontAwesomeIcons.bars),
+          onPressed: () => _scaffoldKey.currentState?.openDrawer(),
         ),
         leadingWidth: 68,
         title: const Text(Strings.appTitle),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -33,7 +32,7 @@ class ResultPage extends StatelessWidget {
           children: [
             Text(
               Strings.yourResult,
-              style: Styles.primaryTextTheme.bodyText1.copyWith(
+              style: Styles.primaryTextTheme.bodyText1?.copyWith(
                 letterSpacing: 2,
               ),
             ),
@@ -45,8 +44,8 @@ class ResultPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      '${watch.getResult()}',
-                      style: Styles.primaryTextTheme.headline6.copyWith(
+                      watch.getResult(),
+                      style: Styles.primaryTextTheme.headline6?.copyWith(
                         letterSpacing: 2,
                         color: watch.getResultColor(),
                       ),
@@ -60,45 +59,48 @@ class ResultPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 32),
                     Text(
-                      '${watch.getRange()}',
-                      style: Styles.primaryTextTheme.headline6.copyWith(
+                      watch.getRange(),
+                      style: Styles.primaryTextTheme.headline6?.copyWith(
                         letterSpacing: 2,
                       ),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      '${watch.getRangeValue()}',
-                      style: Styles.primaryTextTheme.headline6.copyWith(
+                      watch.getRangeValue(),
+                      style: Styles.primaryTextTheme.headline6?.copyWith(
                         letterSpacing: 2,
                         color: Styles.white,
                       ),
                     ),
                     const SizedBox(height: 32),
                     Text(
-                      '${watch.getDescription()}',
+                      watch.getDescription(),
                       textAlign: TextAlign.center,
-                      style: Styles.primaryTextTheme.headline6.copyWith(
+                      style: Styles.primaryTextTheme.headline6?.copyWith(
                         letterSpacing: 2,
                         color: Styles.white,
                       ),
                     ),
                     const SizedBox(height: 32),
                     Expanded(
-                      child: FlatButton(
-                        color: Styles.activeColor,
-                        splashColor: Styles.buttonColor,
-                        highlightColor: Styles.buttonColor,
-                        minWidth: double.infinity,
-                        height: 60,
+                      child: TextButton(
+                        onPressed: () => context.read<BmiProvider>().saveBmi(),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.resolveWith(
+                            (states) => Styles.getColor(states),
+                          ),
+                        ).merge(
+                          TextButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 60),
+                            splashFactory: NoSplash.splashFactory,
+                          ),
+                        ),
                         child: Text(
                           Strings.saveResult,
-                          style: Styles.primaryTextTheme.button.copyWith(
+                          style: Styles.primaryTextTheme.button?.copyWith(
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        onPressed: () {
-                          context.read<BmiProvider>().saveBmi();
-                        },
                       ),
                     ),
                   ],

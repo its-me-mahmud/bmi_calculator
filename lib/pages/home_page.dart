@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/bmi_provider.dart';
-import '../utils/routes.dart';
-import '../utils/strings.dart';
-import '../utils/styles.dart';
-import '../widgets/app_drawer.dart';
-import '../widgets/bottom_button.dart';
-import '../widgets/counter_button.dart';
-import '../widgets/icon_content.dart';
-import '../widgets/reusable_card.dart';
+import 'package:bmi_calculator/providers/bmi_provider.dart';
+import 'package:bmi_calculator/utils/utils.dart';
+import 'package:bmi_calculator/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
+  HomePage({Key? key}) : super(key: key);
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -22,13 +18,13 @@ class HomePage extends StatelessWidget {
       key: _scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(FontAwesomeIcons.bars),
-          onPressed: () => _scaffoldKey.currentState.openDrawer(),
+          icon: const Icon(FontAwesomeIcons.bars),
+          onPressed: () => _scaffoldKey.currentState?.openDrawer(),
         ),
         leadingWidth: 68,
         title: const Text(Strings.appTitle),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -92,7 +88,7 @@ class HomePage extends StatelessWidget {
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        // crossAxisAlignment: CrossAxisAlignment.baseline,
                         children: [
                           Text(
                             '${watch.height.round()}',

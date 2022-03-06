@@ -1,23 +1,21 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'providers/bmi_provider.dart';
-import 'utils/routes.dart';
-import 'utils/strings.dart';
-import 'utils/styles.dart';
+import 'package:bmi_calculator/providers/bmi_provider.dart';
+import 'package:bmi_calculator/utils/utils.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider<BmiProvider>(
       create: (_) => BmiProvider(),
-      // child: DevicePreview(builder: (_) => MyApp()),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

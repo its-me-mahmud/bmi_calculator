@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-import '../utils/styles.dart';
-import 'reusable_card.dart';
-import 'rounded_icon_button.dart';
+import 'package:bmi_calculator/utils/utils.dart';
+import 'package:bmi_calculator/widgets/widgets.dart';
 
 class CounterButton extends StatelessWidget {
+  const CounterButton({
+    Key? key,
+    required this.increment,
+    required this.decrement,
+    required this.title,
+    required this.value,
+  }) : super(key: key);
+
+  final void Function() increment;
+  final void Function() decrement;
   final String title;
   final int value;
-  final VoidCallback increment;
-  final VoidCallback decrement;
-
-  const CounterButton({
-    @required this.title,
-    @required this.value,
-    @required this.increment,
-    @required this.decrement,
-  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +39,12 @@ class CounterButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RoundedIconButton(
+                  onPressed: decrement,
                   icon: Icons.remove,
-                  onTap: decrement,
                 ),
                 RoundedIconButton(
+                  onPressed: increment,
                   icon: Icons.add,
-                  onTap: increment,
                 ),
               ],
             ),

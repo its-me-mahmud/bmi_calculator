@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
-import '../utils/styles.dart';
+import 'package:bmi_calculator/utils/utils.dart';
 
 class BottomButton extends StatelessWidget {
-  final String title;
-  final VoidCallback onTap;
-
   const BottomButton({
-    @required this.title,
-    @required this.onTap,
-  });
+    Key? key,
+    required this.onTap,
+    required this.title,
+  }) : super(key: key);
+
+  final void Function() onTap;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
       child: GestureDetector(
+        onTap: onTap,
         child: FractionallySizedBox(
           heightFactor: 0.13,
           child: Container(
@@ -24,7 +26,6 @@ class BottomButton extends StatelessWidget {
             child: Text(title, style: Styles.primaryTextTheme.button),
           ),
         ),
-        onTap: onTap,
       ),
     );
   }

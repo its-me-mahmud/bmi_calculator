@@ -24,12 +24,11 @@ class Styles {
     focusColor: secondaryColor,
     canvasColor: primaryColor,
     highlightColor: secondaryColor,
-    appBarTheme: AppBarTheme(
-      textTheme: TextTheme(
-        title: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: primaryColor,
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
       ),
     ),
     sliderTheme: SliderThemeData(
@@ -38,8 +37,8 @@ class Styles {
       inactiveTrackColor: grey,
       thumbColor: buttonColor,
       overlayColor: buttonColor.withOpacity(0.2),
-      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 16),
-      overlayShape: RoundSliderOverlayShape(overlayRadius: 26),
+      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 16),
+      overlayShape: const RoundSliderOverlayShape(overlayRadius: 26),
     ),
     textTheme: primaryTextTheme,
   );
@@ -84,4 +83,15 @@ class Styles {
     fontSize: 16,
     fontWeight: FontWeight.bold,
   );
+
+  static Color getColor(Set<MaterialState> states) {
+    const interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Styles.buttonColor;
+    }
+    return Styles.primaryColor;
+  }
 }

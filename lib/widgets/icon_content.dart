@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/styles.dart';
+import 'package:bmi_calculator/utils/utils.dart';
 
 class IconContent extends StatelessWidget {
   final bool isSelected;
@@ -9,11 +9,12 @@ class IconContent extends StatelessWidget {
   final String label;
 
   const IconContent({
-    @required this.isSelected,
+    Key? key,
+    required this.isSelected,
     this.angle = 0.0,
-    @required this.icon,
-    @required this.label,
-  });
+    required this.icon,
+    required this.label,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +35,9 @@ class IconContent extends StatelessWidget {
         Text(
           label,
           style: isSelected
-              ? Styles.primaryTextTheme.headline6.copyWith(color: Styles.white)
+              ? Styles.primaryTextTheme.headline6?.copyWith(color: Styles.white)
               : Styles.primaryTextTheme.headline6,
         ),
-        // const SizedBox(height: 8),
       ],
     );
   }

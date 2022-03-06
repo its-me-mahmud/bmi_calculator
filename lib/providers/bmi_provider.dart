@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../utils/strings.dart';
-import '../utils/styles.dart';
+import 'package:bmi_calculator/utils/utils.dart';
 
 class BmiProvider extends ChangeNotifier {
+  BmiProvider() {
+    _loadPrefsData();
+  }
+
   bool _isMaleSelected = true;
   bool _isFemaleSelected = false;
   int _height = 183;
@@ -18,23 +21,20 @@ class BmiProvider extends ChangeNotifier {
   final String _weightKey = 'weight';
   final String _ageKey = 'age';
   final String _bmiKey = 'bmi';
-  SharedPreferences _preferences;
 
-  BmiProvider() {
-    _loadPrefsData();
-  }
+  late SharedPreferences _preferences;
 
-  get isMaleSelected => _isMaleSelected;
+  bool get isMaleSelected => _isMaleSelected;
 
-  get isFemaleSelected => _isFemaleSelected;
+  bool get isFemaleSelected => _isFemaleSelected;
 
-  get height => _height;
+  int get height => _height;
 
-  get weight => _weight;
+  int get weight => _weight;
 
-  get age => _age;
+  int get age => _age;
 
-  get bmi => _bmi;
+  double get bmi => _bmi;
 
   set isMaleSelected(bool isSelected) {
     _isMaleSelected = isSelected;
@@ -154,9 +154,7 @@ class BmiProvider extends ChangeNotifier {
   }
 
   _initPrefs() async {
-    if (_preferences == null) {
-      _preferences = await SharedPreferences.getInstance();
-    }
+    _preferences = await SharedPreferences.getInstance();
   }
 
   _loadPrefsData() async {

@@ -1,40 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../utils/routes.dart';
-import '../utils/strings.dart';
-import '../utils/styles.dart';
+import 'package:bmi_calculator/utils/utils.dart';
 
 class AppDrawer extends StatelessWidget {
+  const AppDrawer({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // final watch = context.watch<BmiProvider>();
     return Drawer(
       child: Column(
         children: [
           const SizedBox(height: 32),
           ListTile(
-            leading: Icon(
+            onTap: () => Navigator.pushReplacementNamed(context, home),
+            leading: const Icon(
               FontAwesomeIcons.home,
               color: Styles.grey,
             ),
             title: Text(
               Strings.home,
-              style: Styles.primaryTextTheme.headline6.copyWith(fontSize: 16),
+              style: Styles.primaryTextTheme.headline6?.copyWith(fontSize: 16),
             ),
-            onTap: () {
-              Navigator.pushReplacementNamed(context, home);
-            },
           ),
           ListTile(
-            leading: Icon(
-              FontAwesomeIcons.calculator,
-              color: Styles.grey,
-            ),
-            title: Text(
-              Strings.result,
-              style: Styles.primaryTextTheme.headline6.copyWith(fontSize: 16),
-            ),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushNamedAndRemoveUntil(
@@ -43,6 +32,14 @@ class AppDrawer extends StatelessWidget {
                 (route) => route.settings.name == home,
               );
             },
+            leading: const Icon(
+              FontAwesomeIcons.calculator,
+              color: Styles.grey,
+            ),
+            title: Text(
+              Strings.result,
+              style: Styles.primaryTextTheme.headline6?.copyWith(fontSize: 16),
+            ),
           ),
         ],
       ),
