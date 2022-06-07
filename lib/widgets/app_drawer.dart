@@ -15,7 +15,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             onTap: () => Navigator.pushReplacementNamed(context, home),
             leading: const Icon(
-              FontAwesomeIcons.home,
+              FontAwesomeIcons.house,
               color: Styles.grey,
             ),
             title: Text(
