@@ -19,38 +19,48 @@ class CounterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ReusableCard(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      color: Styles.secondaryColor,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: Styles.primaryTextTheme.headline6,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        final height = constraints.maxHeight;
+        return ReusableCard(
+          padding: EdgeInsets.symmetric(
+            horizontal: width / 16,
+            vertical: height / 24,
           ),
-          Text(
-            '$value',
-            style: Styles.primaryTextTheme.headline1,
-          ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RoundedIconButton(
-                  onPressed: decrement,
-                  icon: Icons.remove,
+          color: Styles.secondaryColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: height / 16),
+              Text(
+                title,
+                style: Styles.primaryTextTheme.headline6,
+              ),
+              Text(
+                '$value',
+                style: Styles.primaryTextTheme.headline1,
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RoundedIconButton(
+                      onPressed: decrement,
+                      icon: Icons.remove,
+                    ),
+                    RoundedIconButton(
+                      onPressed: increment,
+                      icon: Icons.add,
+                    ),
+                  ],
                 ),
-                RoundedIconButton(
-                  onPressed: increment,
-                  icon: Icons.add,
-                ),
-              ],
-            ),
+              ),
+              SizedBox(height: height / 44),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -18,11 +18,10 @@ class BottomButton extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: FractionallySizedBox(
-          heightFactor: 0.13,
+          heightFactor: 0.1,
           child: Container(
             alignment: Alignment.center,
             color: Styles.buttonColor,
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
             child: Text(title, style: Styles.primaryTextTheme.button),
           ),
         ),

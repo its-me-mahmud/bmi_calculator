@@ -25,121 +25,128 @@ class HomePage extends StatelessWidget {
         title: const Text(Strings.appTitle),
       ),
       drawer: const AppDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      child: ReusableCard(
-                        color: watch.isMaleSelected
-                            ? Styles.activeColor
-                            : Styles.inactiveColor,
-                        child: IconContent(
-                          isSelected: watch.isMaleSelected,
-                          icon: FontAwesomeIcons.mars,
-                          label: Strings.male,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          final height = constraints.maxHeight;
+          return Padding(
+            padding: EdgeInsets.all(height / 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          child: ReusableCard(
+                            color: watch.isMaleSelected
+                                ? Styles.activeColor
+                                : Styles.inactiveColor,
+                            child: IconContent(
+                              isSelected: watch.isMaleSelected,
+                              icon: FontAwesomeIcons.mars,
+                              label: Strings.male,
+                            ),
+                          ),
+                          onTap: () {
+                            watch.isMaleSelected = true;
+                            watch.isFemaleSelected = false;
+                          },
                         ),
                       ),
-                      onTap: () {
-                        watch.isMaleSelected = true;
-                        watch.isFemaleSelected = false;
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: 4),
-                  Expanded(
-                    child: GestureDetector(
-                      child: ReusableCard(
-                        color: watch.isFemaleSelected
-                            ? Styles.activeColor
-                            : Styles.inactiveColor,
-                        child: IconContent(
-                          isSelected: watch.isFemaleSelected,
-                          angle: 95,
-                          icon: FontAwesomeIcons.venus,
-                          label: Strings.female,
+                      SizedBox(width: width / 60),
+                      Expanded(
+                        child: GestureDetector(
+                          child: ReusableCard(
+                            color: watch.isFemaleSelected
+                                ? Styles.activeColor
+                                : Styles.inactiveColor,
+                            child: IconContent(
+                              isSelected: watch.isFemaleSelected,
+                              angle: 95,
+                              icon: FontAwesomeIcons.venus,
+                              label: Strings.female,
+                            ),
+                          ),
+                          onTap: () {
+                            watch.isFemaleSelected = true;
+                            watch.isMaleSelected = false;
+                          },
                         ),
                       ),
-                      onTap: () {
-                        watch.isFemaleSelected = true;
-                        watch.isMaleSelected = false;
-                      },
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
-            Expanded(
-              child: ReusableCard(
-                color: Styles.secondaryColor,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      Strings.height,
-                      style: Styles.primaryTextTheme.headline6,
-                    ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        // crossAxisAlignment: CrossAxisAlignment.baseline,
-                        children: [
-                          Text(
-                            '${watch.height.round()}',
-                            style: Styles.primaryTextTheme.headline1,
-                          ),
-                          Text(
-                            Strings.cm,
-                            style: Styles.primaryTextTheme.headline6,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Slider(
-                      min: 120,
-                      max: 220,
-                      value: watch.height.toDouble(),
-                      onChanged: (value) {
-                        watch.height = value.round();
-                      },
-                    ),
-                  ],
                 ),
-              ),
-            ),
-            const SizedBox(height: 24),
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: CounterButton(
-                      title: Strings.weight,
-                      value: watch.weight,
-                      increment: watch.incrementWeight,
-                      decrement: watch.decrementWeight,
+                SizedBox(height: height / 24),
+                Expanded(
+                  child: ReusableCard(
+                    color: Styles.secondaryColor,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: height / 44),
+                        Text(
+                          Strings.height,
+                          style: Styles.primaryTextTheme.headline6,
+                        ),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                '${watch.height.round()}',
+                                style: Styles.primaryTextTheme.headline1,
+                              ),
+                              Text(
+                                Strings.cm,
+                                style: Styles.primaryTextTheme.headline6
+                                    ?.copyWith(fontSize: 20),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Slider(
+                          min: 120,
+                          max: 220,
+                          value: watch.height.toDouble(),
+                          onChanged: (value) {
+                            watch.height = value.round();
+                          },
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: 4),
-                  Expanded(
-                    child: CounterButton(
-                      title: Strings.age,
-                      value: watch.age,
-                      increment: watch.incrementAge,
-                      decrement: watch.decrementAge,
-                    ),
+                ),
+                SizedBox(height: height / 24),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: CounterButton(
+                          title: Strings.weight,
+                          value: watch.weight,
+                          increment: watch.incrementWeight,
+                          decrement: watch.decrementWeight,
+                        ),
+                      ),
+                      SizedBox(width: width / 60),
+                      Expanded(
+                        child: CounterButton(
+                          title: Strings.age,
+                          value: watch.age,
+                          increment: watch.incrementAge,
+                          decrement: watch.decrementAge,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
       bottomNavigationBar: BottomButton(
         title: Strings.calculateBmi,
