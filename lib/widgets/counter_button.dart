@@ -5,12 +5,12 @@ import 'package:bmi_calculator/widgets/widgets.dart';
 
 class CounterButton extends StatelessWidget {
   const CounterButton({
-    Key? key,
+    super.key,
     required this.increment,
     required this.decrement,
     required this.title,
     required this.value,
-  }) : super(key: key);
+  });
 
   final void Function() increment;
   final void Function() decrement;

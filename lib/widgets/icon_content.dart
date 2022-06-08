@@ -9,12 +9,12 @@ class IconContent extends StatelessWidget {
   final String label;
 
   const IconContent({
-    Key? key,
+    super.key,
     required this.isSelected,
     this.angle = 0.0,
     required this.icon,
     required this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
