@@ -7,7 +7,7 @@ import 'package:bmi_calculator/utils/utils.dart';
 import 'package:bmi_calculator/widgets/widgets.dart';
 
 class ResultPage extends StatelessWidget {
-  ResultPage({Key? key}) : super(key: key);
+  ResultPage({super.key});
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 

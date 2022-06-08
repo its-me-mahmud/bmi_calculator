@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class ReusableCard extends StatelessWidget {
   const ReusableCard({
-    Key? key,
+    super.key,
     this.padding = const EdgeInsets.all(4.0),
     required this.color,
     required this.child,
-  }) : super(key: key);
+  });
 
   final EdgeInsetsGeometry padding;
   final Color color;

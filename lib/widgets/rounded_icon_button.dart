@@ -4,10 +4,10 @@ import 'package:bmi_calculator/utils/utils.dart';
 
 class RoundedIconButton extends StatelessWidget {
   const RoundedIconButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.icon,
-  }) : super(key: key);
+  });
 
   final void Function() onPressed;
   final IconData icon;

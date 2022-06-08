@@ -4,10 +4,10 @@ import 'package:bmi_calculator/utils/utils.dart';
 
 class BottomButton extends StatelessWidget {
   const BottomButton({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.title,
-  }) : super(key: key);
+  });
 
   final void Function() onTap;
   final String title;
