@@ -35,8 +35,8 @@ class IconContent extends StatelessWidget {
         Text(
           label,
           style: isSelected
-              ? Styles.primaryTextTheme.headline6?.copyWith(color: Styles.white)
-              : Styles.primaryTextTheme.headline6,
+              ? Styles.primaryTextTheme.titleLarge?.copyWith(color: Styles.white)
+              : Styles.primaryTextTheme.titleLarge,
         ),
       ],
     );

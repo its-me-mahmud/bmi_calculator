@@ -44,11 +44,11 @@ class Styles {
   );
 
   static const primaryTextTheme = TextTheme(
-    headline1: _number,
-    headline5: _result,
-    headline6: _label,
-    bodyText1: _title,
-    button: _buttonTitle,
+    displayLarge: _number,
+    headlineSmall: _result,
+    titleLarge: _label,
+    bodyLarge: _title,
+    labelLarge: _buttonTitle,
   );
 
   static const _label = TextStyle(

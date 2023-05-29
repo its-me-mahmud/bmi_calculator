@@ -20,7 +20,7 @@ class AppDrawer extends StatelessWidget {
             ),
             title: Text(
               Strings.home,
-              style: Styles.primaryTextTheme.headline6?.copyWith(fontSize: 16),
+              style: Styles.primaryTextTheme.titleLarge?.copyWith(fontSize: 16),
             ),
           ),
           ListTile(
@@ -38,7 +38,7 @@ class AppDrawer extends StatelessWidget {
             ),
             title: Text(
               Strings.result,
-              style: Styles.primaryTextTheme.headline6?.copyWith(fontSize: 16),
+              style: Styles.primaryTextTheme.titleLarge?.copyWith(fontSize: 16),
             ),
           ),
         ],

@@ -22,7 +22,7 @@ class BottomButton extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             color: Styles.buttonColor,
-            child: Text(title, style: Styles.primaryTextTheme.button),
+            child: Text(title, style: Styles.primaryTextTheme.labelLarge),
           ),
         ),
       ),

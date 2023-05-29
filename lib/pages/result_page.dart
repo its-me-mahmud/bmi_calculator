@@ -35,7 +35,7 @@ class ResultPage extends StatelessWidget {
               children: [
                 Text(
                   Strings.yourResult,
-                  style: Styles.primaryTextTheme.bodyText1?.copyWith(
+                  style: Styles.primaryTextTheme.bodyLarge?.copyWith(
                     letterSpacing: 2,
                   ),
                 ),
@@ -48,7 +48,7 @@ class ResultPage extends StatelessWidget {
                       children: [
                         Text(
                           watch.getResult(),
-                          style: Styles.primaryTextTheme.headline6?.copyWith(
+                          style: Styles.primaryTextTheme.titleLarge?.copyWith(
                             letterSpacing: 2,
                             color: watch.getResultColor(),
                           ),
@@ -57,21 +57,21 @@ class ResultPage extends StatelessWidget {
                           context
                               .select((BmiProvider value) => value.bmi)
                               .toStringAsFixed(1),
-                          style: Styles.primaryTextTheme.headline5?.copyWith(
+                          style: Styles.primaryTextTheme.headlineSmall?.copyWith(
                             letterSpacing: 8,
                           ),
                         ),
                         SizedBox(height: height / 16),
                         Text(
                           watch.getRange(),
-                          style: Styles.primaryTextTheme.headline6?.copyWith(
+                          style: Styles.primaryTextTheme.titleLarge?.copyWith(
                             letterSpacing: 2,
                           ),
                         ),
                         const SizedBox(height: 8),
                         Text(
                           watch.getRangeValue(),
-                          style: Styles.primaryTextTheme.headline6?.copyWith(
+                          style: Styles.primaryTextTheme.titleLarge?.copyWith(
                             letterSpacing: 2,
                             color: Styles.white,
                           ),
@@ -80,7 +80,7 @@ class ResultPage extends StatelessWidget {
                         Text(
                           watch.getDescription(),
                           textAlign: TextAlign.center,
-                          style: Styles.primaryTextTheme.headline6?.copyWith(
+                          style: Styles.primaryTextTheme.titleLarge?.copyWith(
                             letterSpacing: 2,
                             color: Styles.white,
                           ),
@@ -103,7 +103,7 @@ class ResultPage extends StatelessWidget {
                             ),
                             child: Text(
                               Strings.saveResult,
-                              style: Styles.primaryTextTheme.button?.copyWith(
+                              style: Styles.primaryTextTheme.labelLarge?.copyWith(
                                 fontWeight: FontWeight.normal,
                               ),
                             ),

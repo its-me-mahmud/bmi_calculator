@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
                         SizedBox(height: height / 44),
                         Text(
                           Strings.height,
-                          style: Styles.primaryTextTheme.headline6,
+                          style: Styles.primaryTextTheme.titleLarge,
                         ),
                         Expanded(
                           child: Row(
@@ -97,11 +97,11 @@ class HomePage extends StatelessWidget {
                             children: [
                               Text(
                                 '${watch.height.round()}',
-                                style: Styles.primaryTextTheme.headline1,
+                                style: Styles.primaryTextTheme.displayLarge,
                               ),
                               Text(
                                 Strings.cm,
-                                style: Styles.primaryTextTheme.headline6
+                                style: Styles.primaryTextTheme.titleLarge
                                     ?.copyWith(fontSize: 20),
                               ),
                             ],

@@ -35,11 +35,11 @@ class CounterButton extends StatelessWidget {
               SizedBox(height: height / 16),
               Text(
                 title,
-                style: Styles.primaryTextTheme.headline6,
+                style: Styles.primaryTextTheme.titleLarge,
               ),
               Text(
                 '$value',
-                style: Styles.primaryTextTheme.headline1,
+                style: Styles.primaryTextTheme.displayLarge,
               ),
               Expanded(
                 child: Row(
